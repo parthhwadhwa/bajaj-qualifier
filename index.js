@@ -7,7 +7,7 @@ const rateLimit = require("express-rate-limit");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const PORT = process.env.PORT || 3000;
-const OFFICIAL_EMAIL = "parth3900.beai23@chitkara.edu.in";
+const OFFICIAL_EMAIL = "jasmine3843.beai23@chitkara.edu.in";
 
 const genAI = process.env.GEMINI_API_KEY
     ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
@@ -222,7 +222,7 @@ app.post("/bfhl", async (req, res) => {
                         )
                     );
             }
-            return res.status(200).json(successResponse([computeLCM(value)]));
+            return res.status(200).json(successResponse(computeLCM(value)));
         }
 
         if (key === "hcf") {
@@ -235,7 +235,7 @@ app.post("/bfhl", async (req, res) => {
                         )
                     );
             }
-            return res.status(200).json(successResponse([computeHCF(value)]));
+            return res.status(200).json(successResponse(computeHCF(value)));
         }
 
         if (key === "AI") {
@@ -247,7 +247,7 @@ app.post("/bfhl", async (req, res) => {
 
             try {
                 const answer = await askAI(value.trim());
-                return res.status(200).json(successResponse([answer]));
+                return res.status(200).json(successResponse(answer));
             } catch (aiError) {
                 console.error("AI service error:", aiError.message);
                 return res
