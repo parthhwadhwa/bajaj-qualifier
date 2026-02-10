@@ -99,7 +99,7 @@ async function askAI(question) {
         throw new Error("AI service is not configured. Please set GEMINI_API_KEY.");
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const prompt = `Answer the following question in exactly ONE word. Do not include any punctuation, explanation, or extra text. Only output a single word.\n\nQuestion: ${question}`;
 
     const result = await model.generateContent(prompt);
